@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ title }}{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/app2.css' %}">
+{% endblock %}
+
+{% block content %}
+<li><a href="/suggestion/">Add Suggestion</a></li>
+<div id="list-rendering">
+  <p>{{ body }}</p>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="large-12 medium-12 small-12 cell" v-for="sugg in suggestions">
+        {% verbatim %}
+        <div class="card-info">
+          <div class="card-info-content">
+            <h3 class="lead">{{ sugg.suggestion }} - {{ sugg.author }} - {{ sugg.date }}</h3>
+            <img v-bind:src="sugg.image" v:alt="sugg.image_desc" width="200"/>
+            <li v-for="comm in sugg.comments"> {{ comm.comment }} - {{ comm.author }} - {{ comm.date }}</li>
+            {% endverbatim %}
+            {% if request.user.is_authenticated %}
+            <li><a v-bind:href="'comment/'+sugg.id+'/'">comment</a></li>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/myvue.js' %}"></script>
+{% endblock %}

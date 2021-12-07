@@ -13,21 +13,20 @@
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="menu" data-dropdown-menu>
-          <li class="menu-text">Suggestion Site</li>
+          <li class="menu-text"><a href="/">STT</a></li>
           {% if request.user.is_authenticated %}
-          <li><a href="/logout/">Logout</a></li>
-          {% else %}
-          <li><a href="/login/">Login</a></li>
+          <li class="menu-text"><a href="/play/">Play</a></li>
+          <li class="menu-text"><a href="/chat/">Chat</a></li>
+          <li class="menu-text"><a href="/leaderboards/">Leaderboards</a></li>
           {% endif %}
         </ul>
       </div>
       <div class="top-bar-right">
         <ul class="menu">
           {% if request.user.is_authenticated %}
-          <li><a href="/suggestion/">Add Suggestion</a></li>
-          <li>Welcome, {{ request.user.username }}  </li>
+          <li class="menu-text"><a href="/logout/">Logout</a></li>
           {% else %}
-          <li>Welcome, Guest</li>
+          <li class="menu-text"><a href="/login/">Login</a></li>
           {% endif %}
         </ul>
       </div>

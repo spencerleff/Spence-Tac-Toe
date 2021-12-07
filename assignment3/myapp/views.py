@@ -11,6 +11,24 @@ from . import forms
 
 # Create your views here.
 def index(request):
+    context = {
+        "title": "Spence Tac Toe",
+    }
+    return render(request, "index.html", context=context)
+
+def play(request):
+    context = {
+        "title": "Spence Tac Toe",
+    }
+    return render(request, "play.html", context=context)
+
+def leaderboards(request):
+    context = {
+        "title": "Spence Tac Toe",
+    }
+    return render(request, "leaderboards.html", context=context)
+
+def chat(request):
     if request.method == "POST":
         form = forms.SuggestionForm(request.POST)
         if form.is_valid() and request.user.is_authenticated:
@@ -20,11 +38,10 @@ def index(request):
         form = forms.SuggestionForm()
 
     context = {
-        "title": "Spencer Leff",
-        "body": "Spencer Leff",
+        "title": "Spence Tac Toe",
         "form": form,
     }
-    return render(request, "index.html", context=context)
+    return render(request, "chat.html", context=context)
 
 @login_required(redirect_field_name="/")
 def comment_view(request, sugg_id):
@@ -32,12 +49,12 @@ def comment_view(request, sugg_id):
         form = forms.CommentForm(request.POST)
         if form.is_valid() and request.user.is_authenticated:
             form.save(request, sugg_id)
-            return redirect("/")
+            return redirect("/chat/")
     else:
         form = forms.CommentForm()
 
     context = {
-        "title": "Comment",
+        "title": "Spence Tac Toe",
         "sugg_id": sugg_id,
         "form": form,
     }
@@ -49,27 +66,19 @@ def suggestion_view(request):
         form = forms.SuggestionForm(request.POST, request.FILES)
         if form.is_valid() and request.user.is_authenticated:
             form.save(request)
-            return redirect("/")
+            return redirect("/chat/")
     else:
         form = forms.SuggestionForm()
 
     context = {
-        "title": "Add Suggestion",
+        "title": "Spence Tac Toe",
         "form": form
     }
     return render(request, "suggestion.html", context=context)
 
-def delete_random(request):
-    some_list = models.SuggestionModel.objects.all()
-    some_int = random.randrange(len(some_list))
-    some_instance = some_list[some_int]
-    some_instance.delete()
-    print(some_int)
-    return redirect("/")
-
 def logout_view(request):
     logout(request)
-    return redirect("/login/")
+    return redirect("/")
 
 def register_view(request):
     if request.method == "POST":
