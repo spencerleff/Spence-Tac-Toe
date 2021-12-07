@@ -8,5 +8,5 @@ services:
        - .:/code
     ports:
        - 8000:8000
-    #user: 1000:1000 (for linux)
+    #user: 1000:1000 #(for linux)
     command: python /code/assignment3/manage.py runserver 0.0.0.0:8000
