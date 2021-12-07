@@ -29,19 +29,7 @@ def leaderboards(request):
     return render(request, "leaderboards.html", context=context)
 
 def chat(request):
-    if request.method == "POST":
-        form = forms.SuggestionForm(request.POST)
-        if form.is_valid() and request.user.is_authenticated:
-            form.save(request)
-            form = forms.SuggestionForm()
-    else:
-        form = forms.SuggestionForm()
-
-    context = {
-        "title": "Spence Tac Toe",
-        "form": form,
-    }
-    return render(request, "chat.html", context=context)
+    return render(request, "chat.html")
 
 @login_required(redirect_field_name="/")
 def comment_view(request, sugg_id):

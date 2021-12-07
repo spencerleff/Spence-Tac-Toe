@@ -2,11 +2,17 @@
 {% load static %}
 {% block title %}{{ title }}{% endblock %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/app2.css' %}">
+<link rel="stylesheet" href="{% static 'css/playStyles.css' %}">
 {% endblock %}
 
 {% block content %}
-
+{% if request.user.is_authenticated %}
+<h3 class="playTitle">Welcome, {{ request.user.username }}</h3>
+<h3 class="playSubtitle">Play Spence Tac Toe</h3>
+{% else %}
+<h3 class="playLogin">Please login in order to play</h3>
+<a href="/login/"><button class="homeButton">Login</button></a>
+{% endif %}
 {% endblock %}
 {% block scripts %}
 <!-- <script src="https://unpkg.com/vue@next"></script> -->
