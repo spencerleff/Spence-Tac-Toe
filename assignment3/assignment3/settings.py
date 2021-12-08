@@ -25,18 +25,19 @@ SECRET_KEY = 'django-insecure-cv7@vi6-lg!_dm9xcj#(m8y!sjsf(48)ek(th*0h(rp3(ckyk+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["35.212.236.105"]
+ALLOWED_HOSTS = ["35.212.236.105", "127.0.0.1"]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'myapp',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,15 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Extra Stuff
+
+ASGI_APPLICATION = "assignment3.asgi.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}

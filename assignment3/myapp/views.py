@@ -31,6 +31,11 @@ def leaderboards(request):
 def chat(request):
     return render(request, "chat.html")
 
+def room(request, room_name):
+    return render(request, "room.html", {
+        'room_name': room_name
+    })
+
 @login_required(redirect_field_name="/")
 def comment_view(request, sugg_id):
     if request.method == "POST":

@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.index),
     path('play/', views.play),
     path('chat/', views.chat),
+    path('chat/<str:room_name>/', views.room, name='room'),
     path('leaderboards/', views.leaderboards),
     path('login/', auth_views.LoginView.as_view()),
     path('register/', views.register_view),
