@@ -20,6 +20,12 @@ def index(request):
 def play(request):
     return render(request, "play.html")
 
+def record_win_view(request):
+    if request.method == 'POST':
+        wins = models.WinsModel.objects.all()
+        wins.wins += 1
+        wins.save()
+
 def leaderboards(request):
     context = {
         "title": "Spence Tac Toe",
