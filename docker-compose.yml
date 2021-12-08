@@ -3,10 +3,26 @@ version: '3'
 
 services:
   web:
+    restart: always
     build: .
     volumes:
        - .:/code
-    ports:
-       - 80:8000
-    #user: 1000:1000 #(for linux)
+    expose:
+       - 8000
+    user: 1001:1002 #(for linux)
     command: python /code/assignment3/manage.py runserver 0.0.0.0:8000
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    depends_on:
+       - web
+    ports:
+       - 80:80
+    links:
+       - web:web
+       
+  redis:
+    image: redis:latest
+    expose:
+       - 6379
