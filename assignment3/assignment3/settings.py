@@ -131,7 +131,7 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Extra Stuff
-
+WSGI_APPLICATION = "assignment3.asgi.application"
 ASGI_APPLICATION = "assignment3.asgi.application"
 CHANNEL_LAYERS = {
     'default': {

@@ -1,47 +1,101 @@
-body {
-    background-color: rgb(241, 241, 241);
-  }
+* {
+  font-family: Verdana;
+  box-sizing: border-box;
+}
 
 .playTitle {
     position: relative;
-    margin: 50px 0px 0px 0px;
-    font-weight: 500;
+    margin: 30px 0px 0px 0px;
+    font-weight: 600;
     font-size: 180%;
     text-align: center;
     font-family: Verdana;
   }
-  
-  .playSubtitle {
-    position: relative;
-    margin: 20px 0px 0px 0px;
-    font-weight: 600;
-    font-size: 200%;
+
+  .title {
+    font-family: Verdana;
     text-align: center;
-    font-family:Verdana;
+    font-size: 400%;
+    font-weight: 600;
+    position: relative;
+    margin: 50px 0px 0px 0px;
   }
 
-.playLogin {
-  position: relative;
-  margin: 50px 0px 0px 0px;
-  font-weight: 500;
-  font-size: 180%;
-  text-align: center;
-  font-family:Verdana;
+  .container {
+    min-height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    margin-bottom: -80px;
+  }
+
+  button {
+    outline: none;
+    border: 5px solid rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-size: 120%;
+    font-weight: 600;
+    background: none;
+    transition: all 0.2s ease-in-out;
+    color: black;
+    border-radius: 4px;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background: rgb(228, 228, 228);
+    color: rgb(0, 0, 0);
+  }
+
+  .play-area {
+    display: grid;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: auto auto auto;
+  }
+  .block {
+    display: flex;
+    width: 100px;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    border: 3px solid black;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .block:hover {
+    cursor: pointer;
+    background: #dfdfdf;
+  }
+
+  .occupied:hover {
+    background: #ff9999;
+  }
+
+#block_0,
+#block_1,
+#block_2 {
+  border-top: none;
 }
 
-  .homeButton {
-    position: relative;
-    margin: 30px 0px 0px 0px;
-    list-style-type: none;
-    font-weight: 600;
-    font-size: 120%;
-    text-align: center;
-    font-family:Verdana;
-    background-color: lightblue;
-    border: none;
-    color: black;
-    padding: 20px;
-    position: relative;
-    left: 48%;
-    border-radius: 5px;
-  }
+#block_0,
+#block_3,
+#block_6 {
+  border-left: none;
+}
+
+#block_6,
+#block_7,
+#block_8 {
+  border-bottom: none;
+}
+
+#block_2,
+#block_5,
+#block_8 {
+  border-right: none;
+}

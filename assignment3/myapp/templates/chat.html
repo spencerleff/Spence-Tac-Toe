@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="../static/css/app.min.css">
+    <link rel="stylesheet" href="../static/css/chatStyles.css">
     <meta charset="utf-8"/>
-    <title>Chat Rooms</title>
+    <title>Spence Tac Toe</title>
+
+    <div class="top-bar">
+        <div class="top-bar-left">
+          <ul class="menu" data-dropdown-menu>
+            <li class="menu-text"><a href="/">STT</a></li>
+            <li class="menu-text"><a href="/play/">Play</a></li>
+            <li class="menu-text"><a href="/chat/">Chat</a></li>
+            <li class="menu-text"><a href="/leaderboards/">Leaderboards</a></li>
+          </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+              <li class="menu-text"><a href="/logout/">Logout</a></li>
+            </ul>
+        </div>
+    </div>
 </head>
 <body>
-    What chat room would you like to enter?<br>
+    <h3 class="playTitle">Enter a chat room</h3>
     <input id="room-name-input" type="text" size="100"><br>
-    <input id="room-name-submit" type="button" value="Enter">
+    <input id="room-name-submit" type="button" class="homeButton" value="Join">
+    <h3> </h3>
+    <br> </br>
 
     <script>
         document.querySelector('#room-name-input').focus();

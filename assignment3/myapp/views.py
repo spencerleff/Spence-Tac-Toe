@@ -16,11 +16,9 @@ def index(request):
     }
     return render(request, "index.html", context=context)
 
+@login_required(redirect_field_name="/")
 def play(request):
-    context = {
-        "title": "Spence Tac Toe",
-    }
-    return render(request, "play.html", context=context)
+    return render(request, "play.html")
 
 def leaderboards(request):
     context = {
@@ -28,9 +26,11 @@ def leaderboards(request):
     }
     return render(request, "leaderboards.html", context=context)
 
+@login_required(redirect_field_name="/")
 def chat(request):
     return render(request, "chat.html")
 
+@login_required(redirect_field_name="/")
 def room(request, room_name):
     return render(request, "room.html", {
         'room_name': room_name
