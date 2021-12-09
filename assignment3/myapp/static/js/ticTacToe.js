@@ -44,6 +44,24 @@ const check_match = () => {
   return "";
 };
 
+const addPlayerMove = e => {
+  if (!out_of_moves && gameBoard[e] == "") {
+    gameBoard[e] = player;
+    game_loop();
+    addComputerMove();
+  }
+};
+
+const addComputerMove = () => {
+  if (!out_of_moves) {
+    do {
+      selected = Math.floor(Math.random() * 9);
+    } while (gameBoard[selected] != "");
+    gameBoard[selected] = computer;
+    game_loop();
+  }
+};
+
 const check_for_winner = () => {
   let res = check_match()
   if (res == player) {
@@ -77,24 +95,6 @@ const game_loop = () => {
   is_gameBoard_full();
   check_for_winner();
 }
-
-const addPlayerMove = e => {
-  if (!out_of_moves && gameBoard[e] == "") {
-    gameBoard[e] = player;
-    game_loop();
-    addComputerMove();
-  }
-};
-
-const addComputerMove = () => {
-  if (!out_of_moves) {
-    do {
-      selected = Math.floor(Math.random() * 9);
-    } while (gameBoard[selected] != "");
-    gameBoard[selected] = computer;
-    game_loop();
-  }
-};
 
 const reset_board = () => {
   gameBoard = ["", "", "", "", "", "", "", "", ""];
