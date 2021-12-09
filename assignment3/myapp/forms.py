@@ -74,4 +74,5 @@ class RegistrationForm(UserCreationForm):
         user.email = self.cleaned_data["email"]
         if commit:
             user.save()
+            models.WinsModel.objects.create(user=user, wins=0)
         return user

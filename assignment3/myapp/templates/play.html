@@ -31,6 +31,14 @@
     <button onclick="reset_board()">Restart</button>
 </div>
 
+<div class="nameWins">
+    {% for o in l_list %}
+        {% if o.user.username == request.user.username %}
+            Total Wins - {{ o.wins }}
+        {% endif %}
+    {% endfor %}
+</div>
+
 {% endblock %}
 {% block scripts %}
 <script src="{% static 'js/ticTacToe.js' %}"></script>

@@ -1,0 +1,22 @@
+.leaderboard {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(221, 233, 236);
+    border: 3px solid black;
+    border-radius: 8px;
+    font-family: Verdana;
+    font-size: 140%;
+}
+
+.L_header {
+    font-family: Verdana;
+    font-size: 180%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-align: center;
+}

@@ -8,6 +8,7 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path('play/', views.play),
+    path('addwin/', views.addwin),
     path('chat/', views.chat),
     path('chat/<str:room_name>/', views.room, name='room'),
     path('leaderboards/', views.leaderboards),

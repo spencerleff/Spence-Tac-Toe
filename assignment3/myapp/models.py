@@ -13,6 +13,16 @@ class SuggestionModel(models.Model):
     def __str__(self):
         return str(self.author.username) + " " + str(self.suggestion)
 
+class WinsModel(models.Model):
+    user = models.ForeignKey(auth_user, on_delete=models.CASCADE)
+    wins = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ['-wins']
+
+    def __str__(self):
+        return str(self.user.username) + " " + str(self.wins)
+        
 class CommentModel(models.Model):
     comment = models.CharField(max_length=240)
     author = models.ForeignKey(auth_user, on_delete=models.CASCADE)
@@ -24,13 +34,3 @@ class CommentModel(models.Model):
 
     def __str__(self):
         return str(self.author.username) + " " + str(self.comment)
-
-class WinsModel(models.Model):
-    user = models.ForeignKey(auth_user, on_delete=models.CASCADE)
-    wins = models.IntegerField(default=0)
-
-    class Meta:
-        ordering = ['-wins']
-
-    def __str__(self):
-        return str(self.user.username) + " " + str(self.wins)

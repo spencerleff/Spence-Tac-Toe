@@ -3,12 +3,22 @@
 {% block title %}{{ title }}{% endblock %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/app2.css' %}">
+<link rel="stylesheet" href="{% static 'css/leaderboardsStyles.css' %}">
 {% endblock %}
 
 {% block content %}
-
+<h3 class="L_header">Leaderboard</h3>
+<div id="list-rendering">
+  <div class="leaderboard">
+    {% for o in l_list %}
+        {{ o.user.username }} - {{ o.wins }}
+        <br>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
 {% block scripts %}
-<!-- <script src="https://unpkg.com/vue@next"></script> -->
-<!-- <script src="{% static 'js/myvue.js' %}"></script> -->
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'js/myvue.js' %}"></script>
 {% endblock %}

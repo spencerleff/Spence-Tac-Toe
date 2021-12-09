@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="../static/css/app.min.css">
     <link rel="stylesheet" href="../static/css/roomStyles.css">
     <meta charset="utf-8"/>
     <title>Spence Tac Toe</title>
     
-    <div class="top-bar">
-        <div class="top-bar-left">
-          <ul class="menu" data-dropdown-menu>
-            <li class="menu-text"><a href="/">STT</a></li>
-            <li class="menu-text"><a href="/play/">Play</a></li>
-            <li class="menu-text"><a href="/chat/">Chat</a></li>
-            <li class="menu-text"><a href="/leaderboards/">Leaderboards</a></li>
-          </ul>
-        </div>
-        <div class="top-bar-right">
-            <ul class="menu">
-              <li class="menu-text"><a href="/logout/">Logout</a></li>
-            </ul>
-        </div>
-    </div>
+    <ul class="navbar">
+        <li><a href="/">STT</a></li>
+        <li><a href="/play/">Play</a></li>
+        <li><a href="/chat/">Chat</a></li>
+        <li><a href="/leaderboards/">Leaderboards</a></li>
+        <li><a href="/logout/">Logout</a></li>
+    </ul>
 </head>
 <body>
     <textarea id="chat-log" cols="100" rows="20"></textarea><br>

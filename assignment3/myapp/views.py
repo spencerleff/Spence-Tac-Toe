@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User as auth_user
+from django.db.models import F
 
 import random
 from datetime import datetime, timezone
 
 from . import models
 from . import forms
+
 
 # Create your views here.
 def index(request):
@@ -18,17 +21,26 @@ def index(request):
 
 @login_required(redirect_field_name="/")
 def play(request):
-    return render(request, "play.html")
-
-def record_win_view(request):
-    if request.method == 'POST':
-        wins = models.WinsModel.objects.all()
-        wins.wins += 1
-        wins.save()
-
-def leaderboards(request):
+    l_list = models.WinsModel.objects.all()
     context = {
         "title": "Spence Tac Toe",
+        "l_list": l_list,
+    }
+    return render(request, "play.html", context=context)
+
+@login_required(redirect_field_name="/")
+def addwin(request):
+    win_obj = models.WinsModel.objects.get(user=request.user)
+    win_obj.wins = F('wins') + 1
+    win_obj.save()
+    return redirect(play)
+
+
+def leaderboards(request):
+    l_list = models.WinsModel.objects.all()
+    context = {
+        "title": "Spence Tac Toe",
+        "l_list": l_list,
     }
     return render(request, "leaderboards.html", context=context)
 
